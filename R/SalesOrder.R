@@ -20,17 +20,16 @@ SalesOrderSelectServer <- function(input,output,session,dms_token) {
 
   shiny::observeEvent(input$btn_SalesOrder_view,{
 
-    FSalesOrder=text_SalesOrder()
+    FSalesOrderID=text_SalesOrder()
 
 
-    if(FSalesOrder==''){
+    if(FSalesOrderID==''){
 
       tsui::pop_notice("Please Enter Sales Order")
 
 
     }else{
-      data = mdlVmSalesOrderr::SalesOrder_selectByDate(dms_token = dms_token,FCalculateYear = FCalculateYear,FLatestVersion =FLatestVersion ,FVersion = FVersion,FCalculationPeriod = FCalculationPeriod)
-
+      data = mdlVMSalesOrderPkg::SalesOrder_select(erp_token =erp_token ,FSalesOrderID =FSalesOrderID )
       tsui::run_dataTable2(id ='SalesOrder_resultView' ,data =data )
 
       tsui::run_download_xlsx(id = 'dl_SalesOrder',data = data,filename = 'SalesOrder.xlsx')
