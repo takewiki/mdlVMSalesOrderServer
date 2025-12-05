@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' SalesOrderSelectServer()
-SalesOrderSelectServer <- function(input,output,session,dms_token) {
+SalesOrderSelectServer <- function(input,output,session,dms_token,erp_token) {
   #获取参数
   text_SalesOrder=tsui::var_text('text_SalesOrder')
 
@@ -57,8 +57,8 @@ SalesOrderSelectServer <- function(input,output,session,dms_token) {
 #'
 #' @examples
 #' SalesOrderServer()
-SalesOrderServer <- function(input,output,session,dms_token) {
-  SalesOrderSelectServer(input = input,output = output,session = session,dms_token = dms_token)
+SalesOrderServer <- function(input,output,session,dms_token,erp_token) {
+  SalesOrderSelectServer(input = input,output = output,session = session,dms_token = dms_token,erp_token=erp_token)
 
 
 }

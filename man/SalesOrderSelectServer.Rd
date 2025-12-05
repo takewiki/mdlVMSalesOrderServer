@@ -4,7 +4,7 @@
 \alias{SalesOrderSelectServer}
 \title{处理逻辑}
 \usage{
-SalesOrderSelectServer(input, output, session, dms_token)
+SalesOrderSelectServer(input, output, session, dms_token, erp_token)
 }
 \arguments{
 \item{input}{输入}
