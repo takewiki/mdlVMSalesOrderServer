@@ -3,15 +3,16 @@
 #'
 #' @param input 输入
 #' @param output 输出
+#' @param app_id
+#' @param run_env
 #' @param session 会话
-#' @param dms_token 口令
 #'
 #' @return 返回值
 #' @export
 #'
 #' @examples
 #' SalesOrderSelectServer()
-SalesOrderSelectServer <- function(input,output,session,dms_token,erp_token) {
+SalesOrderSelectServer <- function(input,output,session, app_id, run_env = "PRD") {
   #获取参数
   text_SalesOrder=tsui::var_text('text_SalesOrder')
 
@@ -29,6 +30,7 @@ SalesOrderSelectServer <- function(input,output,session,dms_token,erp_token) {
 
 
     }else{
+      erp_token = rdbepkg::dbConfig(FAppId = app_id, FType = "ERP", FRunEnv = run_env)
       data = mdlVMSalesOrderPkg::SalesOrder_select(erp_token =erp_token ,FSalesOrderID =FSalesOrderID )
       tsui::run_dataTable2(id ='SalesOrder_resultView' ,data =data )
 
@@ -49,16 +51,17 @@ SalesOrderSelectServer <- function(input,output,session,dms_token,erp_token) {
 #'
 #' @param input 输入
 #' @param output 输出
+#' @param app_id
+#' @param run_env
 #' @param session 会话
-#' @param dms_token 口令
 #'
 #' @return 返回值
 #' @export
 #'
 #' @examples
 #' SalesOrderServer()
-SalesOrderServer <- function(input,output,session,dms_token,erp_token) {
-  SalesOrderSelectServer(input = input,output = output,session = session,dms_token = dms_token,erp_token=erp_token)
+SalesOrderServer <- function(input,output,session, app_id, run_env = "PRD") {
+  SalesOrderSelectServer(input = input,output = output,session = session,app_id=app_id, run_env = run_env)
 
 
 }
