@@ -32,7 +32,8 @@ SalesOrderSelectServer <- function(input,output,session, app_id, run_env = "PRD"
     }else{
       erp_token = rdbepkg::dbConfig(FAppId = app_id, FType = "ERP", FRunEnv = run_env)
       data = mdlVMSalesOrderPkg::SalesOrder_select(erp_token =erp_token ,FSalesOrderID =FSalesOrderID )
-      tsui::run_dataTable2(id ='SalesOrder_resultView' ,data =data )
+      # 增加对英文界面展示的支持
+      tsui::run_dataTable2(id ='SalesOrder_resultView' ,data =data,lang='en')
 
       tsui::run_download_xlsx(id = 'dl_SalesOrder',data = data,filename = 'SalesOrder.xlsx')
 
