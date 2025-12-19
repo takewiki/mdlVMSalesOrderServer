@@ -21,10 +21,10 @@ SalesOrderSelectServer <- function(input,output,session, app_id, run_env = "PRD"
     'Product Name',
     'Serial Number',
     'Sales OrderQty',
-    'Production Date',
-    'Sales OrderID2',
-    'Delivery Date',
-    'Total DeliveryQty'
+    'Production Date'
+   # 'Sales OrderID2',
+   # 'Delivery Date',
+    #'Total DeliveryQty'
   )
 
   #设置默认值
@@ -33,7 +33,8 @@ SalesOrderSelectServer <- function(input,output,session, app_id, run_env = "PRD"
     'Delivery Location',
     'PN',
     'Product Name',
-    'Serial Number'
+    'Serial Number',
+    'Delivery Date'
   )
   SalesOrder_reset_columns <- c(
     'Sales OrderID',
@@ -98,7 +99,9 @@ SalesOrderSelectServer <- function(input,output,session, app_id, run_env = "PRD"
       # 增加对英文界面展示的支持
       tsui::run_dataTable2(id ='SalesOrder_resultView' ,data =data_selected,lang='en')
 
-      tsui::run_download_xlsx(id = 'dl_SalesOrder',data = data_selected,filename = 'SalesOrder.xlsx')
+      filename=paste('SalesOrder-',Sys.Date(),'.xlsx')
+
+      tsui::run_download_xlsx(id = 'dl_SalesOrder',data = data_selected,filename = filename)
 
 
     }
