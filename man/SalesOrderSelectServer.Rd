@@ -19,3 +19,6 @@ SalesOrderSelectServer(input, output, session, app_id, run_env = "PRD")
 \description{
 处理逻辑
 }
+\examples{
+SalesOrderSelectServer()
+}

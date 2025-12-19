@@ -16,25 +16,23 @@ SalesOrderSelectServer <- function(input,output,session, app_id, run_env = "PRD"
   # 获取所有字段名
   SalesOrder_all_columns <- c(
     'Sales OrderID',
-    'Delivery Location',
     'PN',
     'Product Name',
     'Serial Number',
+    'Delivery Date',
+    'Delivery Location',
     'Sales OrderQty',
     'Production Date'
-   # 'Sales OrderID2',
-   # 'Delivery Date',
-    #'Total DeliveryQty'
   )
 
   #设置默认值
   SalesOrder_default_columns <- c(
     'Sales OrderID',
-    'Delivery Location',
     'PN',
     'Product Name',
     'Serial Number',
-    'Delivery Date'
+    'Delivery Date',
+    'Delivery Location'
   )
   SalesOrder_reset_columns <- c(
     'Sales OrderID',
